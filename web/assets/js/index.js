@@ -80,3 +80,18 @@ $("#erase").click(function () {
 $("#saveSetup").click(function () {
   $("#setupForm").submit();
 });
+
+// For Setup Modal
+$('#showpass').click(function () {
+  if ($(this).hasClass('btn-success')) {
+    $('#dbpassword').attr('type', 'text');
+    $(this).removeClass('btn-success');
+    $(this).addClass('btn-danger');
+    $(this).attr('value', 'Hide');
+  } else if ($(this).hasClass('btn-danger')) {
+    $('#dbpassword').attr('type', 'password');
+    $(this).removeClass('btn-danger');
+    $(this).addClass('btn-success');
+    $(this).attr('value', 'Show');
+  }
+});
