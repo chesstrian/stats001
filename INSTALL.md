@@ -10,4 +10,4 @@ sudo ./composer.phar install
 
 sudo chown www-data:\ -R web/includes/
 ```
-Finally go to http://localhost/stats001/web/
+Finally go to [http://localhost/stats001/web/](http://localhost/stats001/web/)
