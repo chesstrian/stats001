@@ -71,7 +71,7 @@ $("#show").click(function () {
 });
 
 $("#erase").click(function () {
-  $("#data").addClass('invisible');
+  $("#data").hide();
   tableCDR.fnClearTable();
 
   $('.hasDatepicker').datepicker({ minDate: null, maxDate: null });
