@@ -36,7 +36,7 @@ $(function () {
     dateFormat: "yy-mm-dd",
     maxDate: 0,
     onClose: function (selectedDate) {
-      $("#from").datepicker("option", "maxDate", selectedDate);
+      if (selectedDate) $("#from").datepicker("option", "maxDate", selectedDate);
     }
   });
 
@@ -48,6 +48,7 @@ $("#show").click(function () {
     type: "POST",
     url: "includes/process.php",
     data: {
+      disposition: $("#disposition").val(),
       exten: $("#exten").val(),
       from: $("#from").val(),
       to: $("#to").val()

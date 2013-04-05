@@ -16,7 +16,7 @@ if (file_exists('./config.inc.php')) {
     $sql = "SELECT calldate, src, dst, disposition, billsec, ceil ((billsec) / 60) AS minutes
     FROM " . $db['table'] .
     " WHERE calldate BETWEEN '" . $_POST['from'] . " 00:00:00' AND '" . $_POST['to'] . " 23:59:59'
-    AND disposition = 'ANSWERED'
+    AND disposition = '". $_POST['disposition'] ."'
     AND (src = '" . $_POST['exten'] . "' OR dst = '" . $_POST['exten'] . "')
     AND (src LIKE '______%' OR dst LIKE '______%')
     ORDER BY calldate ASC";

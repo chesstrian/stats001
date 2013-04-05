@@ -46,16 +46,51 @@
     <!-- Main hero unit for a primary marketing message or call to action -->
     <div class="hero-unit">
       <h1>Estadísticas por Extensión</h1>
-      <form id="filters" class="form-inline" method="post">
+      <form id="filters" class="form-horizontal" method="post">
         <fieldset>
-          <legend>Filtros</legend>
-          <label>Extensión</label>
-          <input id="exten" type="text" placeholder="1234" align="right">
-          &nbsp;
-          <label>Desde</label>
-          <input type="text" id="from">
-          <label>hasta</label>
-          <input type="text" id="to">
+          <legend>Llamada</legend>
+          <div class="row-fluid">
+            <div class="span4">
+              <div class="control-group">
+                <label class="control-label">Extensión</label>
+                <div class="controls">
+                  <input id="exten" type="text" placeholder="1234" align="right">
+                </div>
+              </div>
+            </div>
+            <div class="span4">
+              <div class="control-group">
+                <label class="control-label">Estado</label>
+                <div class="controls">
+                  <select id="disposition">
+                    <option value="ANSWERED">Contestada</option>
+                    <option value="NO ANSWER">No Contestada</option>
+                    <option value="BUSY">Ocupada</option>
+                    <option value="FAILED">Fallida</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <legend>Fechas</legend>
+          <div class="row-fluid">
+            <div class="span4">
+              <div class="control-group">
+                <label class="control-label">Desde</label>
+                <div class="controls">
+                  <input type="text" id="from">
+                </div>
+              </div>
+            </div>
+            <div class="span4">
+              <div class="control-group">
+                <label class="control-label">hasta</label>
+                <div class="controls">
+                  <input type="text" id="to">
+                </div>
+              </div>
+            </div>
+          </div>
         </fieldset>
         <br>
         <fieldset>
@@ -108,3 +143,4 @@
   <script src="assets/js/index.js"></script>
 </body>
 </html>
+
