@@ -39,6 +39,8 @@ $(function () {
       $("#from").datepicker("option", "maxDate", selectedDate);
     }
   });
+
+  $("#data").hide();
 });
 
 $("#show").click(function () {
@@ -53,7 +55,14 @@ $("#show").click(function () {
   }).done(function (html) {
     var json = JSON.parse(html);
     if (json.status.code == 200) {
-      $("#data").removeClass('invisible');
+      
+      $("#data").show();
+
+      var tableToolsInstance = TableTools.fnGetInstance("dataCDR");
+      if ( tableToolsInstance != null && tableToolsInstance.fnResizeRequired() ) {
+          tableToolsInstance.fnResizeButtons();
+      }
+
       for (var i = 0; i < json.data.length; i++) {
         tableCDR.fnAddData([json.data[i].calldate, json.data[i].src, json.data[i].dst, json.data[i].disposition, json.data[i].billsec, json.data[i].minutes]);
       }
