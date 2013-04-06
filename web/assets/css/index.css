@@ -10,3 +10,13 @@ body {
 #erase {
   float: right;
 }
+
+#data {
+	position: relative;
+}
+
+.DTTT {
+	position: absolute;
+	top: 0px;
+	right: 285px;
+}
