@@ -57,6 +57,8 @@ $("#show").click(function () {
     var json = JSON.parse(html);
     if (json.status.code == 200) {
       
+      tableCDR.fnClearTable();
+
       $("#data").show();
 
       var tableToolsInstance = TableTools.fnGetInstance("dataCDR");
