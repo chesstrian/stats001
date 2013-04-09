@@ -35,5 +35,10 @@ sudo curl -s http://getcomposer.org/installer | php
 sudo ./composer.phar install
 
 sudo chown www-data:\ -R web/includes/
+
+mysql -u user -p < scripts/stats001.sql
+
+# Edit web/index.php and add user and password for MySQL
 ```
-Finally go to [http://localhost/stats001/web/](http://localhost/stats001/web/)
+
+Finally go to [http://localhost/stats001/web/](http://localhost/stats001/web/) and use `admin` and `admin`.
