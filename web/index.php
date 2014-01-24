@@ -12,8 +12,8 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'driver'   => 'pdo_mysql',
     'dbname'   => 'stats001',
     'host'     => 'localhost',
-    'user'     => '',
-    'password' => '',
+    'user'     => 'root',
+    'password' => 'un10ckMySQL',
     'charset'  => 'utf8',
     ),
 ));
@@ -64,7 +64,22 @@ $app->get('/app', function () use ($app) {
   if (null === $user = $app['session']->get('user')) {
     return $app->redirect('login');
   } else {
-    return $app['twig']->render('index.html.twig');
+    return $app['twig']->render('index.html.twig',array(
+      'active'=>'app','location'=>'app','name'=>$app['session']->get('user')['name'],
+      'role'=>$app['session']->get('user')['role']
+    ));
+  }
+});
+
+$app->get('/setup', function () use ($app) {
+  if (null === $user = $app['session']->get('user')) {
+    return $app->redirect('login');
+  } else {
+    //$rend=['setup.html.twig','active'=>'setup'];
+    return $app['twig']->render('setup.html.twig',array(
+      'active'=>'setup','location'=>'setup','name'=>$app['session']->get('user')['name'],
+      'role'=>$app['session']->get('user')['role']
+    ));
   }
 });
 

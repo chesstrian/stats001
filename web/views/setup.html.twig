@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+
+{% include 'parts/header.html.twig' %}
+<body>
+<div id="da-wrapper">    
+  <!-- Top Bar-->
+  {%include 'parts/top_bar.html.twig'%}
+  <!-- Content -->
+  <div id="da-content">         
+    <!-- Container -->
+    <div class="da-container clearfix">
+      <!-- Sidebar Separator do not remove -->
+      <div id="da-sidebar-separator"></div>        
+      <!-- Sidebar -->
+      {%include 'parts/sidebar.html.twig'%}
+      <!-- Main Content Wrapper -->
+      <div id="da-content-wrap" class="da-panel-content da-form-container">
+        <!-- Content -->
+        <div id="da-content-area">
+          <div class="row-fluid">
+            <div class="span12">
+              <div class="da-panel">
+                <div class="da-panel-header">
+                   <span class="da-panel-title">
+                   <i class="icon-settings"></i>
+                    Configuración para la Base de Datos
+                  </span>
+                </div>
+                <div class="da-panel-content da-form-container">
+                  <form id="setupForm" class="da-form da-form-inline" method="post" action="includes/setup.php">
+                   <!-- Información del servidor y la base de datos-->
+                    <div class="da-form-row">                    
+                      <div class="da-form-cols">
+                        <div class="col-3-8">
+                          <label class="da-form-label">Servidor</label>
+                          <div class="controls">
+                            <input name="host" id="exten" type="text"placeholder="127.0.0.1" align="right">
+                          </div>
+                        </div>
+                        <div class="col-3-8">
+                          <label class="da-form-label">Usuario</label>
+                          <div class="controls">
+                            <input name="user" id="exten" type="text"placeholder="Usuario" align="right">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="da-form-cols">
+                        <div class="col-3-8">
+                          <label class="da-form-label">Contraseña</label>
+                          <div class="controls">
+                            <input  name="pass" type="password" id="pass1" type="text">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="da-form-row">
+                      <div class="da-form-cols">
+                        <div class="col-3-8">
+                          <label class="da-form-label">Nombre de la base de datos</label>
+                          <div class="controls">
+                            <input id="exten" type="text"placeholder="asteriskcdrcdr" align="right">
+                          </div>
+                        </div>
+                        <div class="col-3-8">
+                          <label class="da-form-label">Tabla CDR</label>
+                          <div class="controls">
+                            <input id="exten" type="text"placeholder="cdr" align="right">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Acciones -->
+                    <div class="btn-row">
+                      <div class="da-form-item da-form-cols">
+                          <button id="erase" type="reset" class="btn gray left">Cancelar &raquo;</button>
+                          <button id="saveSetup" type="button" class="btn btn-success">Guardar &raquo;</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>     
+    </div> <!-- /container -->
+  </div>
+{% include 'parts/footer.html.twig' %}
+</div>
+
+      <!-- Le javascript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      
+      <script src="assets/js/libs/jquery-1.8.3.min.js"></script>
+      <script src="assets/jui/js/jquery-ui-1.9.2.min.js"></script>
+      <script src="assets/js/libs/jquery.form.min.js"></script>
+      <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+      <script src="plugins/datatables/TableTools.min.js"></script>
+      <script src="plugins/datatables/ZeroClipboard.js"></script>
+      <script src="plugins/datatables/dataTables.bootstrap.js"></script>
+      <script src="bootstrap/js/bootstrap.min.js"></script>
+      <script src="assets/jui/jquery.ui.timepicker.js"></script>
+      <script src="assets/js/index.js"></script>
+
+</body>
+</html>
