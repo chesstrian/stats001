@@ -3,7 +3,7 @@
 if (file_exists('./config.inc.php')) {
   require './config.inc.php';
 
-  $mysqli = new mysqli($db['host'], $db['user'], $db['pass'], $db['name']);
+  $mysqli = new mysqli($db['host'], $db['user'], $db['pass'], $db['name'], $db['port']);
 
   if ($mysqli->connect_errno) {
     $result = array(

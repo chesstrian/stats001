@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Grupo NetHexa">
+
+    <!-- Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" media="screen">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="assets/css/dandelion.theme.css" media="screen">
+    <!-- Icon Stylesheet -->
+    <link rel="stylesheet" href="assets/css/fonts/glyphicons/style.css" media="screen">
+    <!--  Main Stylesheet -->
+    <link rel="stylesheet" href="assets/css/dandelion.css" media="screen">
+    
+    <link rel="stylesheet" href="assets/jui/css/jquery.ui.all.css" media="screen">
+    <link rel="stylesheet" href="assets/plugins/jgrowl/jquery.jgrowl.css" media="screen">
+
+    <link rel="stylesheet" href="assets/css/index.css" media="screen">
+  </head>
+  <body>
+    <div id="da-wrapper">    
+    <!-- Top Bar-->
+      <div id="da-header">
+        <div id="da-header-top">
+          <!-- Container -->
+          <div class="da-container clearfix">
+            <!-- Header Toolbar Menu -->
+            <div id="da-header-toolbar" class="clearfix">
+              <div id="da-user-profile-wrap">
+                <div id="da-user-profile" data-toggle="dropdown" class="clearfix">
+                  <div id="da-user-avatar">
+                    <img src="assets/images/icons/white/32/admin_user.png">
+                  </div>
+                  <div id="da-user-info">
+                    {{name}}
+                    <span class="da-user-title">{{role}}</span>
+                  </div>
+                </div>
+                {% block dropdown_menu %}
+                <ul class="dropdown-menu">
+                  <li><a id="helpModalDispatcher">Ayuda</a></li>
+                  <li><a id="aboutModalDispatcher">Acerca de</a></li>
+                  <li class="divider"></li>
+                  <li><a href="logout">Salir</a></li>
+                </ul>
+                {% endblock %}
+              </div>
+            </div>
+          </div>                    
+        </div>
+        <div id="da-header-bottom">
+          <!-- Container -->
+          <div class="da-container clearfix">            
+            <!-- Breadcrumbs -->
+            <div id="da-breadcrumb">
+              <ul>
+                <li class="active">
+                  <a href="{{ breadcrumb['href'] }}"><i class="{{ breadcrumb['class'] }}"></i>{{ breadcrumb['text'] }}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Content -->
+      <div id="da-content">
+        <!-- Container -->
+        <div class="da-container clearfix">
+          <!-- Sidebar Separator do not remove -->
+          <div id="da-sidebar-separator"></div>        
+          <!-- Sidebar -->
+          <div id="da-sidebar">
+            <!-- Navigation Toggle for < 480px -->
+            <div id="da-sidebar-toggle"></div>
+            <!-- Main Navigation -->
+            <div id="da-main-nav" class="btn-container">
+              <ul class="nav">
+                <li class="{{ active == 'app' ? 'active' : ''}}">
+                  <a href="app">
+                    <span class="da-nav-icon">
+                      <i class="icon-home"></i>
+                    </span>
+                    Inicio
+                  </a>
+                </li>
+                <li class="{{ active == 'setup' ? 'active' : ''}}">
+                  <a href="setup">
+                    <span class="da-nav-icon">
+                      <i class="icon-settings"></i>
+                    </span>
+                    Configuración
+                  </a>
+                </li>
+                <li>
+                  <a href="logout">
+                  <span class="da-nav-icon">
+                    <img src="assets/images/icons/black/32/exit.png">
+                  </span>
+                  Salir
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>  
+          <!-- Main Content Wrapper -->
+          <div id="da-content-wrap" class="da-panel-content da-form-container">
+            <!-- Content -->
+            {% block content %}{% endblock %}
+          </div>
+        </div> <!-- /container -->
+        {% include 'modals.html.twig' %}
+      </div>
+      <!-- Footer -->
+      <div id="da-footer">
+        <div class="da-container clearfix">
+          <p>&copy; <a href="http://nethexa.com" target="_blank">Grupo NetHexa S.A.S</a> 2014</p>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/libs/jquery-1.8.3.min.js"></script>
+    <script src="assets/jui/js/jquery-ui-1.9.2.min.js"></script>
+    <script src="assets/js/libs/jquery.form.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="assets/plugins/datatables/TableTools.min.js"></script>
+    <script src="assets/plugins/datatables/ZeroClipboard.js"></script>
+    <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="assets/jui/jquery.ui.timepicker.js"></script>
+    <script src="assets/plugins/jgrowl/jquery.jgrowl.min.js"></script>
+    <script src="assets/js/index.js"></script>
+  </body>
+</html>

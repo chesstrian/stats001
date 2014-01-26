@@ -2,22 +2,36 @@ var tableCDR;
 
 $(document).ready(function () {
   tableCDR = $("table#dataCDR").dataTable({
-    "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>T",
-    "bAutoWidth": false,
-    "aoColumns": [{ "sWidth": "20%" }, { "sWidth": "15%" }, { "sWidth": "15%" }, { "sWidth": "20%" }, { "sWidth": "15%" }, { "sWidth": "15%" }],
-    "oTableTools": {
-      "sSwfPath": "assets/swf/copy_csv_xls_pdf.swf",
-      "aButtons": [ "copy", "print", "csv", "pdf" ]
+    sDom: '<"da-form"<"da-form-block"lfrtip><"btn-row DT-btn-row"T>>',
+    aoColumns: [{ "sWidth": "20%" }, { "sWidth": "15%" }, { "sWidth": "15%" }, { "sWidth": "20%" }, { "sWidth": "15%" }, { "sWidth": "15%" }],
+    iDisplayLength: 100,
+    oTableTools: {
+      sSwfPath: "assets/plugins/datatables/swf/copy_csv_xls_pdf.swf",
+      aButtons: [
+        {
+          "sExtends": "print",
+          "sButtonText": "Imprimir"
+        },
+        {
+          "sExtends": "xls",
+          "sButtonText": "Exportar a Excel",
+          "sFileName": "Stats - Llamadas.xls"
+        },
+        {
+          "sExtends": "pdf",
+          "sButtonText": "Exportar en PDF",
+          "sFileName": "Stats - Llamadas.pdf"
+        },
+        {
+          "sExtends": "csv",
+          "sButtonText": "Exportar como CSV",
+          "sFileName": "Stats - Llamadas.csv"
+        },
+      ],
     }
   });
 
-  $("#setupForm").ajaxForm(function (code) {
-    if (code) {
-      // TODO: Notify success.
-    } else {
-      // TODO: Notify failure.
-    }
-  });
+  $('.DTTT a').addClass('btn-success DTTT-condenser');
 });
 
 $(function () {
@@ -30,6 +44,7 @@ $(function () {
       $("#to").datepicker("option", "minDate", selectedDate);
     }
   });
+  
   $("#to").datepicker({
     changeMonth: false,
     numberOfMonths: 1,
@@ -41,6 +56,42 @@ $(function () {
   });
 
   $("#data").hide();
+
+  $("#helpModal").dialog({
+    autoOpen: false,
+    title: "Para usar esta herramienta",
+    modal: true,
+    width: "550",
+    buttons: [{
+      text: "Cerrar",
+      click: function() {
+        $( this ).dialog( "close" );
+      }
+    }]
+  });
+
+  $("#aboutModal").dialog({
+    autoOpen: false,
+    title: "Acerca de esta herramienta",
+    modal: true,
+    width: "550",
+    buttons: [{
+      text: "Cerrar",
+      click: function() {
+        $( this ).dialog( "close" );
+      }
+    }]
+  });
+
+  $("#helpModalDispatcher").bind("click", function(event) {
+    $("#helpModal").dialog("option", {modal: true}).dialog("open");
+    event.preventDefault();
+  });
+
+  $("#aboutModalDispatcher").bind("click", function(event) {
+    $("#aboutModal").dialog("option", {modal: true}).dialog("open");
+    event.preventDefault();
+  });
 });
 
 $("#show").click(function () {
@@ -81,20 +132,36 @@ $("#erase").click(function () {
 });
 
 $("#saveSetup").click(function () {
-  $("#setupForm").submit();
+  $.ajax({
+    type: "POST",
+    url: "includes/setup.php",
+    data: {
+      host: $("#host").val(),
+      user: $("#user").val(),
+      pass: $("#pass").val(),
+      port: $("#port").val(),
+      name: $("#name").val(),
+      table: $("#table").val()
+    }
+  }).done(function (json) {
+    var json = JSON.parse(json);
+    if (json.message != "") {
+      $.jGrowl(json.message, {position: "bottom-left"});
+    }
+  });
 });
 
 // For Setup Modal
 $('#showpass').click(function () {
   if ($(this).hasClass('btn-success')) {
-    $('#dbpassword').attr('type', 'text');
+    $('#pass').prop('type', 'text');
     $(this).removeClass('btn-success');
     $(this).addClass('btn-danger');
-    $(this).attr('value', 'Hide');
+    $(this).html('Mostrar');
   } else if ($(this).hasClass('btn-danger')) {
-    $('#dbpassword').attr('type', 'password');
+    $('#pass').prop('type', 'password');
     $(this).removeClass('btn-danger');
     $(this).addClass('btn-success');
-    $(this).attr('value', 'Show');
+    $(this).html('Ocultar');
   }
 });

@@ -1,22 +1,51 @@
-body {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
-
-#exten {
-  text-align: right;
-}
-
-#erase {
-  float: right;
-}
-
-#data {
-	position: relative;
-}
-
 .DTTT {
 	position: absolute;
 	top: 0px;
 	right: 285px;
+}
+
+.pagination {
+    margin: 0;
+    display: block;
+}
+
+.input-append {
+  display: inline-block;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  vertical-align: middle;
+  width: 80%;
+}
+
+.input-append input{
+  display: inline-block;
+  position: relative;
+  margin-bottom: 0;
+  *margin-left: 0;
+  vertical-align: top;
+  -webkit-border-radius: 4px 0 0 4px;
+  -moz-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
+  margin-left: 0
+}
+
+.appended-button {
+  margin-top: 0 !important;
+  -webkit-border-radius: 0 4px 4px 0;
+  -moz-border-radius: 0 4px 4px 0;
+  border-radius: 0 4px 4px 0;
+  margin-left: -3px;
+}
+
+.DT-btn-row {
+  margin-top: 54px !important;
+}
+
+.DTTT {
+  position: relative !important;
+  right: 0;
+}
+
+.DTTT-condenser {
+  margin-left: -1px !important;
 }

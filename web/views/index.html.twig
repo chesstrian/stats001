@@ -1,132 +1,93 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+{% extends 'layout.html.twig' %}
 
-{% include 'parts/header.html.twig' %}
-<body>
-  <div id="da-wrapper">    
-  <!-- Top Bar-->
-  {%include 'parts/top_bar.html.twig'%}
-    <!-- Content -->
-    <div id="da-content">
-      <!-- Container -->
-      <div class="da-container clearfix">
-        <!-- Sidebar Separator do not remove -->
-        <div id="da-sidebar-separator"></div>        
-        <!-- Sidebar -->
-        {%include 'parts/sidebar.html.twig'%}
-        <!-- Main Content Wrapper -->
-        <div id="da-content-wrap" class="da-panel-content da-form-container">
-          <!-- Content -->
-          <div id="da-content-area">
-            <div class="row-fluid">
-              <div class="span12  ">
-                <div class="da-panel">
-                  <div class="da-panel-header">
-                    <span class="da-panel-title">
-                      <i class="icon-zoom-in"></i>
-                      Estadísticas por Extensión
-                    </span>
+{% block content %}
+<div id="da-content-area">
+  <div class="row-fluid">
+    <div class="span12  ">
+      <div class="da-panel">
+        <div class="da-panel-header">
+          <span class="da-panel-title">
+            <i class="icon-zoom-in"></i>
+            Estadísticas por Extensión
+          </span>
+        </div>
+        <div class="da-panel-content da-form-container">
+          <form class="da-form da-form-inline">
+            <!-- Opciones -->
+            <div class="da-form-row">
+              <div class="da-form-cols">
+                <div class="col-3-8">
+                  <label class="da-form-label">Extensión</label>
+                  <div class="controls">
+                    <input id="exten" type="text" placeholder="1234" align="right">
                   </div>
-                  <div class="da-panel-content da-form-container">
-                    <form class="da-form da-form-inline">
-                      <!-- Opciones -->
-                      <div class="da-form-row">
-                        <div class="da-form-cols">
-                          <div class="col-3-8">
-                            <label class="da-form-label">Extensión</label>
-                            <div class="controls">
-                              <input id="exten" type="text" placeholder="1234" align="right">
-                            </div>
-                          </div>    
-                          <div class="col-3-8">
-                            <label class="da-form-label">Estado</label>
-                            <div id="dc-target">
-                              <select id="disposition">
-                                <option value="ANSWERED">Contestada</option>
-                                <option value="NO ANSWER">No Contestada</option>
-                                <option value="BUSY">Ocupada</option>
-                                <option value="FAILED">Fallida</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                      <!-- Fecha -->
-                        <div class="da-form-cols">
-                          <div class="col-3-8">
-                            <label class="da-form-label">Desde</label>
-                            <input id="from" type="text">
-                          </div>
-                          <div class="col-3-8">
-                            <label class="da-form-label">Hasta</label>
-                            <input id="to" type="text">
-                          </div>
-                        </div>
-                      </div>
-                      <!-- Acciones -->
-                      <div class="btn-row">
-                        <div class="da-form-item da-form-cols">
-                            <button id="erase" type="reset" class="btn gray left">Limpiar &raquo;</button>
-                            <button id="show" type="button" class="btn btn-success">Mostrar &raquo;</button>
-                        </div>
-                      </div>
-                    </form>
+                </div>    
+                <div class="col-3-8">
+                  <label class="da-form-label">Estado</label>
+                  <div id="dc-target">
+                    <select id="disposition">
+                      <option value="ANSWERED">Contestada</option>
+                      <option value="NO ANSWER">No Contestada</option>
+                      <option value="BUSY">Ocupada</option>
+                      <option value="FAILED">Fallida</option>
+                    </select>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="row-fluid">
-              <div class="span12">
-                <div class="da-panel" id="data">
-                  <div class="da-panel-header" >
-                    <span class="da-panel-title">
-                      <i class="icon-stats"></i>
-                      Estadísticas por Extensión
-                    </span>
-                  </div>
-                  <div class="da-panel-inner-wrap">
-                    <div class="da-panel-content da-table-container data-table">
-                        <table id="dataCDR" class="da-table">
-                          <thead>
-                            <tr>
-                              <th>Fecha</th>
-                              <th>Fuente</th>
-                              <th>Destino</th>
-                              <th>Disposición</th>
-                              <th>Duración (Seg)</th>
-                              <th>Duración (Min)</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                          </tbody>
-                        </table>
-                    </div>
-                  </div>  
+            <!-- Fecha -->
+              <div class="da-form-cols">
+                <div class="col-3-8">
+                  <label class="da-form-label">Desde</label>
+                  <input id="from" type="text">
+                </div>
+                <div class="col-3-8">
+                  <label class="da-form-label">Hasta</label>
+                  <input id="to" type="text">
                 </div>
               </div>
             </div>
-          </div>
-        </div>     
-      </div> <!-- /container -->
+            <!-- Acciones -->
+            <div class="btn-row">
+              <div class="da-form-item da-form-cols">
+                  <button id="erase" type="reset" class="btn gray left">Limpiar</button>
+                  <button id="show" type="button" class="btn btn-success">Mostrar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-{% include 'parts/footer.html.twig' %}
   </div>
-      <!-- Le javascript
-      ================================================== -->
-      <!-- Placed at the end of the document so the pages load faster -->
-      
-      <script src="assets/js/libs/jquery-1.8.3.min.js"></script>
-      <script src="assets/jui/js/jquery-ui-1.9.2.min.js"></script>
-      <script src="assets/js/libs/jquery.form.min.js"></script>
-      <script src="plugins/datatables/jquery.dataTables.min.js"></script>
-      <script src="plugins/datatables/TableTools.min.js"></script>
-      <script src="plugins/datatables/ZeroClipboard.js"></script>
-      <script src="plugins/datatables/dataTables.bootstrap.js"></script>
-      <script src="bootstrap/js/bootstrap.min.js"></script>
-      <script src="assets/jui/jquery.ui.timepicker.js"></script>
-      <script src="assets/js/index.js"></script>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="da-panel" id="data">
+        <div class="da-panel-header" >
+          <span class="da-panel-title">
+            <i class="icon-stats"></i>
+            Estadísticas por Extensión
+          </span>
+        </div>
+        <div class="da-panel-inner-wrap">
+          <div class="da-panel-content da-table-container data-table">
+              <table id="dataCDR" class="da-table">
+                <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Fuente</th>
+                    <th>Destino</th>
+                    <th>Disposición</th>
+                    <th>Duración (Seg)</th>
+                    <th>Duración (Min)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
 
-</body>
-</html>

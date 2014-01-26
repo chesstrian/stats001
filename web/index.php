@@ -65,8 +65,14 @@ $app->get('/app', function () use ($app) {
     return $app->redirect('login');
   } else {
     return $app['twig']->render('index.html.twig',array(
-      'active'=>'app','location'=>'app','name'=>$app['session']->get('user')['name'],
-      'role'=>$app['session']->get('user')['role']
+      'active' => 'app',
+      'breadcrumb' => array(
+        'text' => 'Inicio',
+        'href' => 'app',
+        'class' => 'icon-home'
+      ),
+      'name' => $app['session']->get('user')['name'],
+      'role' => $app['session']->get('user')['role']
     ));
   }
 });
@@ -77,8 +83,14 @@ $app->get('/setup', function () use ($app) {
   } else {
     //$rend=['setup.html.twig','active'=>'setup'];
     return $app['twig']->render('setup.html.twig',array(
-      'active'=>'setup','location'=>'setup','name'=>$app['session']->get('user')['name'],
-      'role'=>$app['session']->get('user')['role']
+      'active' => 'setup',
+      'breadcrumb' => array(
+        'text' => 'Configuración',
+        'href' => 'setup',
+        'class' => 'icon-settings'
+      ),
+      'name' => $app['session']->get('user')['name'],
+      'role' => $app['session']->get('user')['role']
     ));
   }
 });
