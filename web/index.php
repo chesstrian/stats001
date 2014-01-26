@@ -12,8 +12,8 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'driver'   => 'pdo_mysql',
     'dbname'   => 'stats001',
     'host'     => 'localhost',
-    'user'     => 'root',
-    'password' => 'un10ckMySQL',
+    'user'     => '',
+    'password' => '',
     'charset'  => 'utf8',
     ),
 ));
